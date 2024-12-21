@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #818181;
+    overflow: hidden; /* Kar tanelerinin dışarı taşmaması için */
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Butonların satırlara sarmasına izin verir */
+    justify-content: center; /* Butonları ortalar */
+    gap: 20px; /* Butonlar arasındaki boşluğu ayarlayalım */
+    padding: 20px;
+    max-width: 100%;
+}
+
+.game-button {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: 150px; /* Varsayılan genişlik */
+    margin: 10px; /* Butonların etrafında boşluk */
+}
+
+.game-button img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.game-button p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.game-button:hover {
+    transform: scale(1.1);
+}
+
+.game-button:active {
+    transform: scale(0.95);
+}
+
+/* Kar tanesi animasyonları */
+.snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.snow .flake {
+    position: absolute;
+    top: -10px;
+    background: white;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Mobil ekranlar için medya sorguları */
+@media (max-width: 768px) {
+    .container {
+        gap: 10px; /* Butonlar arasındaki boşluğu kısalt */
+    }
+
+    .game-button {
+        width: 120px; /* Buton genişliğini küçült */
+    }
+
+    .game-button img {
+        width: 100px; /* Görsellerin boyutunu küçült */
+    }
+
+    .game-button p {
+        font-size: 16px; /* Yazı boyutunu küçült */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        gap: 10px; /* Butonlar arasındaki boşluğu kısalt */
+        padding: 10px; /* Daha küçük ekranlar için daha az padding */
+    }
+
+    .game-button {
+        width: 100%; /* Butonlar tam genişlikte olsun */
+        text-align: center; /* Yazı ortalanmış olsun */
+    }
+
+    .game-button img {
+        width: 80px; /* Görsellerin boyutunu daha da küçült */
+        height: auto;
+    }
+
+    .game-button p {
+        font-size: 14px; /* Yazı boyutunu daha da küçült */
+    }
+}
